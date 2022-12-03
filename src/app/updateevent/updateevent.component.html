@@ -1,0 +1,38 @@
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+        <form  >
+          <div class="form-group">
+            <label>Title</label>
+            <input class="form-control" type="text" name="title"required="true" [(ngModel)]="currentEvent.title" >
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <input class="form-control" type="text" name="description" required [(ngModel)]="currentEvent.description">
+          </div>
+  
+          <div class="form-group">
+            <label>Date</label>
+            <input class="form-control" type="date" name="date" required *ngIf="currentEvent.date" [(ngModel)]="currentEvent.date.split('T')[0]" >
+          </div>
+
+          <div class="form-group">
+            <label>Address</label>
+            <input class="form-control" type="text" name="address" required [(ngModel)]="currentEvent.address">
+          </div>
+          
+          
+          <div class="form-group">
+          <label>Image</label>
+          <input
+          name="image"
+            id="file"
+            type="file"
+            class="form-control"
+            >
+        </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit" (click)="updateAbonement()">Add Event</button>
+          </div>
+        </form>
+    </div>
+  </div>

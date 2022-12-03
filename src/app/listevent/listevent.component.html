@@ -1,0 +1,37 @@
+<div class="table">
+    <div class="form-group">
+        <label>Date</label>
+        <input class="form-control" type="date" name="date"  [(ngModel)]="searchDate">
+        <button class="btn btn-success" (click)="searchByDate()">Search</button>
+        <button class="btn btn-primary" (click)="reset()">Refresh Table</button>
+      </div>
+      <div>
+        <table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Address</th>
+            <th scope="col">Image</th>
+            <th scope="col">Modifier</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let event of events | paginate: { itemsPerPage: 5, currentPage: page , totalItems: totalLength };let i = index">
+            <td>{{i+1}}</td>
+            <td>{{event.title}}</td>
+            <td>{{event.description}}</td>
+            <td>{{event.date.split('T')[0]}}</td>
+            <td>{{event.address}}</td>
+            <td><img src="{{imageUrl+event.image}}" alt="image"></td>
+            <td><button class="btn btn-success" routerLink="/updateevent/{{event._id}}">Update</button></td>
+            <td><button class="btn btn-danger" (click)="deleteData(event._id,i)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
